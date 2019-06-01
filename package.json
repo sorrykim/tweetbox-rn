@@ -1,0 +1,61 @@
+{
+  "name": "TweetBox",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "test": "jest"
+  },
+  "dependencies": {
+    "mobx": "^5.9.4",
+    "mobx-react": "^5.4.4",
+    "react": "16.8.3",
+    "react-native": "0.59.8",
+    "react-native-elements": "^1.1.0",
+    "react-native-gesture-handler": "^1.2.1",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "@types/jest": "^24.0.13",
+    "@types/react": "^16.8.18",
+    "@types/react-native": "^0.57.59",
+    "@types/react-test-renderer": "^16.8.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-jest": "^24.8.0",
+    "eslint": "5.3.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-native-typescript-transformer": "^1.2.12",
+    "react-test-renderer": "16.8.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache"
+  }
+}
