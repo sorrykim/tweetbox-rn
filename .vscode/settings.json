@@ -5,6 +5,7 @@
     "esnext",
     "interop",
     "iteration",
+    "mobx",
     "module",
     "sourcemap",
     "tslib",

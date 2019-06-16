@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.tweetbox;
 
 import android.app.Application;
 

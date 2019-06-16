@@ -1,6 +1,10 @@
+import React from 'react';
 import { createAppContainer } from 'react-navigation';
-import { AppNavigator } from './navigators/app-navigator';
 
-export default createAppContainer(AppNavigator);
+import { AppNavigator } from './navigators/AppNavigator';
 
+const AppContainer = createAppContainer(AppNavigator);
 
+export default () => (
+  <AppContainer />
+);

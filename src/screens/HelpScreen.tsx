@@ -37,13 +37,3 @@ export const HelpScreen: ScreenFunctionComponent = () => (
     <Text style={styles.instructions}>{instructions}</Text>
   </View>
 );
-
-HelpScreen.navigationOptions = {
-  tabBarIcon: ({ focused } : { focused: boolean }) => (
-    <TabIcon
-      name="help"
-      color="#1a95ec"
-      focused={focused}
-    />
-  ),
-}

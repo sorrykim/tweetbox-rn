@@ -1,12 +1,15 @@
-import * as React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Header, Divider } from 'react-native-elements';
+import { observer } from 'mobx-react-lite';
+import { NavigationScreenProps, NavigationScreenComponent } from 'react-navigation'
+import { FlatList } from 'react-native-gesture-handler';
 
-import { TweetItem } from '../components/TweetItem';
-import { tweets } from '../../fixtures/tweets';
-import { Tweet } from '../interfaces/Tweet';
-import { ScreenFunctionComponent } from '../interfaces/screen-function-component';
+import { TweetView } from '../components/TweetView';
+import { Tweet } from '../models/Tweet';
 import { TabIcon } from '../components/TabIcon';
+import { TweetStore } from '../stores/TweetStore';
+import { useStore } from '../stores';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,28 +31,42 @@ const styles = StyleSheet.create({
   },
 });
 
-const renderItem = ({ item } : { item: Tweet }) => (
-  <View style={styles.listItem}>
-    <TweetItem tweet={item} style={styles.tweetItem} />
-    <Divider />
-  </View>
-);
-
-export const TweetsScreen: ScreenFunctionComponent = () => (
-  <View style={styles.container}>
-    <Header
-      containerStyle={styles.header}
-      centerComponent={{ text: 'Tweets', style: { color: '#fff' } }}
-    />
-    <View style={styles.content}>
-      <FlatList
-        keyExtractor={(item, index) => String(index)}
-        data={tweets}
-        renderItem={renderItem}
-      />
+const renderItem = ({ item } : { item: Tweet }) => {
+  return (
+    <View style={styles.listItem}>
+      <TweetView tweet={item} style={styles.tweetItem} />
+      <Divider />
     </View>
-  </View>
-);
+  );
+};
+
+interface Props extends NavigationScreenProps {
+  tweetStore: TweetStore,
+};
+
+export const TweetsScreen: NavigationScreenComponent<Props> = observer(() => {
+  const { tweetStore } = useStore();
+
+  useEffect(() => {
+    tweetStore.fetchAll();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Header
+        containerStyle={styles.header}
+        centerComponent={{ text: 'Tweets', style: { color: '#fff' } }}
+      />
+      <View style={styles.content}>
+        <FlatList
+          keyExtractor={(item, index) => String(index)}
+          data={tweetStore.tweets}
+          renderItem={renderItem}
+        />
+      </View>
+    </View>
+  );
+});
 
 TweetsScreen.navigationOptions = {
   tabBarIcon: ({ focused } : { focused: boolean }) => (
@@ -60,4 +77,4 @@ TweetsScreen.navigationOptions = {
       focused={focused}
     />
   ),
-}
+};

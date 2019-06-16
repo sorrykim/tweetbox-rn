@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { Avatar, Text } from 'react-native-elements';
 
-import { Tweet } from '../interfaces/tweet';
+import { Tweet } from '../models/Tweet';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,7 +42,7 @@ interface Props {
   style?: ViewStyle,
 };
 
-export const TweetItem: React.FunctionComponent<Props> = (props) => {
+export const TweetView: React.FunctionComponent<Props> = (props) => {
   const { tweet: { text, username, nickname, profileImageURL } } = props;
 
   return (
